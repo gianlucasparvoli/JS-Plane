@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<localidades>
+  <loc>
+    <nombre>San Nicolas</nombre>
+    <cp>2900</cp>
+    <provincia>BA</provincia>
+    <proveedor>Alas SRL</proveedor>
+  </loc>
+  <loc>
+    <nombre>Rosario</nombre>
+    <cp>2000</cp>
+    <provincia>SF</provincia>
+    <proveedor>Tienda Leon</proveedor>
+  </loc>
+  <loc>
+    <nombre>Ramallo</nombre>
+    <cp>2915</cp>
+    <provincia>BA</provincia>
+    <proveedor>Remis Avenida</proveedor>
+  </loc>
+  <loc>
+    <nombre>Pergamino</nombre>
+    <cp>2700</cp>
+    <provincia>BA</provincia>
+    <proveedor>Remis Yrigoyen</proveedor>
+  </loc>
+  <loc>
+    <nombre>Arroyo Seco</nombre>
+    <cp>2128</cp>
+    <provincia>SF</provincia>
+    <proveedor>Remiseria arroyo seco</proveedor>
+  </loc>
+  <loc>
+    <nombre>Villa Constitucion</nombre>
+    <cp>2919</cp>
+    <provincia>SF</provincia>
+    <proveedor>Remiseria Parana</proveedor>
+  </loc>
+  <loc>
+    <nombre>Rufino</nombre>
+    <cp>6100</cp>
+    <provincia>BA</provincia>
+    <proveedor>Remises Car Asociados</proveedor>
+  </loc>
+  <loc>
+    <nombre>Fighiera</nombre>
+    <cp>2126</cp>
+    <provincia>BA</provincia>
+    <proveedor>Remiseria 9 de JULIO</proveedor>
+  </loc>
+</localidades>

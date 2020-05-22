@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tp Labo 3 - Sparvoli Gianluca</title>
+    <style>
+        html {
+            background-color: black;
+        }
+
+        body {
+            font-family: 'Helvetica';
+            background-color: white;
+            margin: 50px auto;
+            border: 1px solid grey;
+            border-radius: 10px;
+            max-width: 1000px;
+            bottom: 7px;
+        }
+
+        hr {
+            border: 2px solid blue;
+            border-radius: 2px;
+            height: 2px;
+            background-color: Highlight;
+        }
+
+        fieldset {
+            margin-top: 15px;
+            width: 90%;
+            top: 50%;
+            left: 50%;
+        }
+
+        input[type=text] {
+            padding: 4px;
+            background-color: #F6F6F6;
+            border: 0;
+            box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
+        }
+
+        .tamañoimagenes {
+            /*padding-left: 50px;*/
+            width: 150px;
+            height: 75px;
+            margin: 0 15px 0 30px;
+            position: relative;
+            top: 35px;
+            left: 50px;
+        }
+
+        .titulo {
+            position: relative;
+            width: 100%;
+            top: -25px;
+            text-align: center;
+        }
+
+        .subtitulos {
+            font-weight: bold;
+        }
+
+        .cajas {
+            margin-left: 70px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-left: 50px;
+            border: black 5px solid;
+            height: 350px;
+            border-radius: 15px;
+            position: relative;
+            width: 800px;
+            top: 7px;
+            vertical-align: middle;
+        }
+
+        .proveedores {
+            font-family: 'Helvetica';
+            background-color: #c0c0c0;
+            height: 20px;
+            width: 265px;
+            border: 0;
+            box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
+        }
+
+        .cabecera1 {
+            background-color: #efefef;
+            height: 20px;
+            width: 200px;
+            border: 0;
+            box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
+        }
+
+        .asientosreservados {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 2px auto;
+            border: black 2px solid;
+            text-align: center;
+            background-color: #ff9900;
+        }
+
+        .asientosreservados:hover{
+            background-color: orangered;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .asientosocupados {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 2px auto;
+            border: black 2px solid;
+            text-align: center;
+            background-color: #337dff;
+        }
+
+       .asientosocupados:hover {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+       }
+
+        .asientoslibres {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 2px auto;
+            border: black 2px solid;
+            text-align: center;
+            background-color: #8ab6ff;
+        }
+
+        .asientoslibres:hover {
+            background-color: cornflowerblue;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .botones {
+            color: white;
+            background-color: blue;
+            border-radius: 6px;
+            border: 2px solid black;
+            position: relative;
+            width: 200px;
+            top: 8px;
+            text-align: center;
+        }
+
+         .botones:hover {
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+         }
+
+        .asientosselec {
+            font-family: 'Helvetica';
+            height: 20px;
+            width: 400px;
+            position: relative;
+            top: 5px;
+            border: 0;
+            box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <input class="tamañoimagenes" type="image" src="img/AALogo.png" />
+        <h2 class="titulo">Reserva: paso 2 de 4</h2>
+        <hr>
+    </header>
+
+    <form onsubmit="validarasientos();" method="post" action="reserva_paso3.asp">
+        <div class="cajas">
+            <fieldset>
+                <legend class="subtitulos">Datos Pasajeros</legend>
+                <table>
+                    <tr>
+                        <td>Apellido y Nombre: </td>
+                        <td><input type="text" value="Marchili, Maria" readonly name="apellido_nombre" id="apellido_nombre" /></td>
+                    </tr>
+                    <tr>
+                        <td>Destino: </td>
+                        <td><input type="text" value="Mendoza, Argentina (MDZ)" id="destino" name="destino" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Hora Partida: </td>
+                        <td><input type="text" value="10:15hs" readonly id="hora" name="hora" /></td>
+                    </tr>
+                    <tr>
+                        <td>Cantidad Pasajeros: </td>
+                        <td><input id="cantsapajeros" type="text" value="3" readonly name="cantsapajeros" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="botones" accepttype="button" value="Enviar Consulta" readonly /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br /><br />
+            <fieldset>
+                <legend class="subtitulos">Reservas Traslado</legend>
+                <table>
+                    <tr>
+                        <td colspan="1"><input type="checkbox" onclick="CP(this);" checked /></td>
+                        <td colspan="2">CP Localidad partida</td>
+                        <td colspan="3" class=""><input name="CPNumero" id="CPNumero" type="text" maxlength="4" size="4" onchange="localidades(this);" /></td>
+                        <td class="cabecera1"><div id="CP_Localidad" name="CP_Localidad"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="4"><textarea class="proveedores" id="ProvedorTaxi" name="ProvedorTaxi"></textarea></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+
+        <div class="cajas">
+            <fieldset>
+                <legend class="subtitulos">Seleccion Asientos</legend>
+                <table align="center" id="reserva">
+                    <tr>
+                        <td class="asientoslibres" onclick="asientos(this);">1A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">2A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">3A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">4A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">5A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">6A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">7A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">8A</td>
+                        <td class="asientoslibres" onclick="asientos(this);">9A</td>
+                        <td class="asientoslibres" onclick="asientos(this);">10A</td>
+                        <td class="asientosocupados" onclick="asientos(this);">11A</td>
+                    </tr>
+
+                    <tr>
+                        <td class="asientoslibres" onclick="asientos(this);">1B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">2B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">3B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">4B</td>
+                        <td class="asientoslibres" onclick="asientos(this);">5B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">6B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">7B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">8B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">9B</td>
+                        <td class="asientoslibres" onclick="asientos(this);">10B</td>
+                        <td class="asientosocupados" onclick="asientos(this);">11B</td>
+                    </tr>
+
+                    <tr><td><br /></td></tr>
+
+                    <tr>
+                        <td class="asientosocupados" onclick="asientos(this);">1C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">2C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">3C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">4C</td>
+                        <td class="asientoslibres" onclick="asientos(this);">5C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">6C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">7C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">8C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">9C</td>
+                        <td class="asientoslibres" onclick="asientos(this);">10C</td>
+                        <td class="asientosocupados" onclick="asientos(this);">11C</td>
+                    </tr>
+
+                    <tr>
+                        <td class="asientosocupados" onclick="asientos(this);">1D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">2D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">3D</td>
+                        <td class="asientoslibres" onclick="asientos(this);">4D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">5D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">6D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">7D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">8D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">9D</td>
+                        <td class="asientoslibres" onclick="asientos(this);">10D</td>
+                        <td class="asientosocupados" onclick="asientos(this);">11D</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="11"><textarea class="asientosselec" id="ASIENTOS_SELECCIONADOS" name="ASIENTOS_SELECCIONADOS" readonly></textarea></td>
+                    </tr>
+
+                </table>
+            </fieldset>
+
+            <input type="submit" class="botones" name="btnSubmit" id="btnSubmit" value="Siguiente" />
+        </div>
+    </form>
+    <script>
+        var aux = 0;
+        var reserva = [];
+        var cadena_asientos;
+
+        function CP(x) {
+            if (x.checked) {
+                document.getElementById('CPNumero').disabled = false;
+            } else {
+                document.getElementById('CPNumero').disabled = true;
+                document.getElementById('CP_Localidad').innerHTML = '';
+                document.getElementById('ProvedorTaxi').value = '';
+                document.getElementById('CPNumero').value = '';      
+            }
+        }
+
+        function localidades(x) {
+            var localidad = document.getElementById('CP_Localidad');
+            var traslados = document.getElementById('ProvedorTaxi');
+            localidad.innerHTML = ''
+            traslados.innerHTML = ''
+            var xhtp = new XMLHttpRequest();
+            xhtp.open('GET', 'elemento.asp?cp=' + x.value, true);
+            xhtp.send();
+            xhtp.onreadystatechange = function () {
+                if (this.readyState == '4' && this.status == 200) {
+                    var datos = this.responseText.split('|');
+                    if (datos.length > 1) {
+                        localidad.innerHTML = datos[0];
+                        traslados.innerHTML = 'Proveedor local: ' + datos[1];
+                    }
+                }
+            }
+        }
+
+        function asientos(x) {
+            var cantPasajeros = document.getElementById('cantsapajeros').value;
+            var asientoatual = x.textContent;
+            switch (x.className) {
+                case 'asientoslibres':
+                    if (parseInt(cantPasajeros) > aux) {
+                        x.className = 'asientosreservados';
+                        reserva.push(asientoatual);
+                        cadena_asientos = reserva.join();
+                        console.log(cadena_asientos);
+                        aux++;
+                    } else {
+                        alert('Ya reservó el total de asientos comprados');
+                    }
+                    break;
+                case 'asientosreservados':
+                    x.className = 'asientoslibres';
+                    var a = reserva.indexOf(asientoatual);
+                    reserva.splice(a, 1);
+                    cadena_asientos = reserva.join();
+                    console.log(cadena_asientos);
+                    aux--;
+                    break;
+                default:
+                    alert('Asiento elegido reservado');
+                    break;
+
+            }
+            document.getElementById('ASIENTOS_SELECCIONADOS').innerHTML = 'Asientos Reservados: ' + cadena_asientos;
+        }
+
+        function validarasientos() {
+            var cantpasajeros = document.getElementById('cantsapajeros').value;
+            if (cantpasajeros.length < 1 || cantpasajeros != aux) {
+                event.preventDefault();
+                alert('No se reservaron la totalidad de los asientos');
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+Sistema de reserva de asientos para una vuelo, la página es parte del proceso de compra de pasajes de una Aerolínea
